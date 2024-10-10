@@ -6,6 +6,6 @@ export function formatCount(count) {
   } else if (count >= 1_000) {
     return (count / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
   } else {
-    return count.toString();
+    return count?.toString();
   }
 }

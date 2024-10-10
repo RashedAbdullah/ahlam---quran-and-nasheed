@@ -16,6 +16,7 @@ export const fetchVideoData = async (VIDEO_ID) => {
     }
 
     const video = data.items[0];
+    const id = video.id;
     const title = video.snippet.title;
     const description = video.snippet.description;
     const publishedAt = video.snippet.publishedAt;
@@ -24,8 +25,10 @@ export const fetchVideoData = async (VIDEO_ID) => {
     const viewsCount = video.statistics.viewCount;
     const likes = video.statistics.likeCount;
     const comments = video.statistics.commentCount;
+    const tags = video.snippet.tags;
 
     return {
+      id,
       title,
       description,
       thumbnailUrl,
@@ -34,6 +37,7 @@ export const fetchVideoData = async (VIDEO_ID) => {
       publishedAt,
       likes,
       comments,
+      tags,
     };
   } catch (error) {
     console.error("Error fetching video data:", error);

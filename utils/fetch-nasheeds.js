@@ -1,10 +1,8 @@
 import { fetchVideoData } from "./fetch-video";
 
-export const getAllVideos = async (skip = 0, limit = 6) => {
+export const getNasheeds = async () => {
   try {
-    const response = await fetch(
-      `${process.env.WEB_URL}/api/videos?limit=${limit}&skip=${skip}`
-    );
+    const response = await fetch(`${process.env.WEB_URL}/api/nasheeds`);
 
     const data = await response.json();
 
@@ -19,6 +17,7 @@ export const getAllVideos = async (skip = 0, limit = 6) => {
       })
     );
 
+    // Sort the results by `publishedAt` in descending order (newest first)
     const sortedResult = result.sort(
       (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
     );

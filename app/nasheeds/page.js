@@ -1,8 +1,10 @@
 import React from "react";
 import VideoCard from "../_components/video-card";
-import { formatCount } from "@/utils/foram-view";
+import { getNasheeds } from "@/utils/fetch-nasheeds";
 
-const NasheedPage = () => {
+const NasheedPage = async () => {
+  const nasheeds = await getNasheeds();
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-16">
       <div className="container mx-auto px-4">
@@ -13,12 +15,9 @@ const NasheedPage = () => {
           Explore our soulful collection of Nasheeds with Bangla translations.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {nasheeds.map((nasheed, ind) => (
+            <VideoCard key={ind} data={nasheed} />
+          ))}
         </div>
       </div>
     </div>

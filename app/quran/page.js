@@ -1,6 +1,8 @@
+import { getQuran } from "@/utils/fetch-quran";
 import VideoCard from "../_components/video-card";
 
-const QuranPage = () => {
+const QuranPage = async () => {
+  const quran = await getQuran();
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-16">
       <div className="container mx-auto px-4">
@@ -11,12 +13,9 @@ const QuranPage = () => {
           Explore our collection of Quran recitations with Bangla translations.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {quran.map((data, ind) => (
+            <VideoCard key={ind} data={data} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
 import { fetchVideoData } from "./fetch-video";
 
-export const getAllVideos = async (skip = 0, limit = 6) => {
+export const getQuran = async () => {
   try {
-    const response = await fetch(
-      `${process.env.WEB_URL}/api/videos?limit=${limit}&skip=${skip}`
-    );
+    const response = await fetch(`${process.env.WEB_URL}/api/quran`);
 
     const data = await response.json();
 
@@ -26,6 +24,6 @@ export const getAllVideos = async (skip = 0, limit = 6) => {
     return sortedResult;
   } catch (error) {
     console.error("Error fetching videos:", error);
-    return []; // Return an empty array if there's an error
+    return [];
   }
 };
