@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles/globals.css */
+#menu-toggle:checked + #mobile-menu {
+  display: block;
+}
